@@ -1,0 +1,19 @@
+/* in App.css */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scroll-container {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+.scroll-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.scroll-container:hover::-webkit-scrollbar {
+  width: 6px;
+}
