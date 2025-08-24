@@ -10,7 +10,6 @@ type Message = {
 const ChatPage = () => {
   const [userMessage, setUserMessage] = useState("")
   const [membersName,setMembersName]=useState<string[]|null>(null)
-  const [roomId, setRoomId] = useState<Number|null>()
   const [loading, setLoading] = useState<boolean>(false)
   const [messages, setMessages] = useState<Message[]>([])
   const socketref = useRef<WebSocket | null>(null)
@@ -72,10 +71,12 @@ const ChatPage = () => {
   // },[])
 
   useEffect(()=>{
+    setLoading(true)
       socketref.current= new WebSocket(`${url}`)
 
 
       socketref.current.onopen=()=>{
+        setLoading(false)
         sendMessage({type:`${paramType}`,
           payload:{
             roomId:Number(slug.slug),
